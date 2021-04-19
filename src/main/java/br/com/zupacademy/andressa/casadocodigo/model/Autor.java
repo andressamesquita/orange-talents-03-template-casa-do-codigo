@@ -21,6 +21,7 @@ public class Autor {
 	private String descricao;
 	private LocalDateTime instanteCadastro = LocalDateTime.now();
 
+	@Deprecated
 	public Autor() {
 
 	}

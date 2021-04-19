@@ -20,14 +20,16 @@ public class AutorDtoRequest {
 	private String descricao;
 
 	public AutorDtoRequest(@NotBlank String nome, @NotBlank @Email String email, @NotBlank @Size(max = 400) String descricao) {
-		super();
 		this.nome = nome;
 		this.email = email;
 		this.descricao = descricao;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
 
 	public Autor toModel() {
 		return new Autor(nome, email, descricao);
-
 	}
 }

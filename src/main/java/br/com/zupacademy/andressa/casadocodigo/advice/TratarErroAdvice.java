@@ -22,21 +22,17 @@ public class TratarErroAdvice {
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public List<ErroAutorRequest> tratarException(MethodArgumentNotValidException exception) {
-		
+
 		List<ErroAutorRequest> dto = new ArrayList<>();
-		
+
 		List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
 		fieldErrors.forEach(e -> {
 			String mensagem = messageSource.getMessage(e, LocaleContextHolder.getLocale());
 			ErroAutorRequest erro = new ErroAutorRequest(e.getField(), mensagem);
 			dto.add(erro);
 		});
-		
+
 		return dto;
 	}
-		
-	
-	
-	
 
 }
