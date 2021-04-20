@@ -1,4 +1,4 @@
-package br.com.zupacademy.andressa.casadocodigo.controller;
+package br.com.zupacademy.andressa.casadocodigo.autor;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -13,10 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.zupacademy.andressa.casadocodigo.advice.ProibeEmailDuplicadoAutorValidator;
-import br.com.zupacademy.andressa.casadocodigo.controller.dto.request.AutorDtoRequest;
-import br.com.zupacademy.andressa.casadocodigo.controller.dto.response.AutorDtoResponse;
-import br.com.zupacademy.andressa.casadocodigo.model.Autor;
-import br.com.zupacademy.andressa.casadocodigo.repository.AutorRepository;
 
 @RestController
 @RequestMapping("/autores")

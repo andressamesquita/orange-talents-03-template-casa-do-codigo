@@ -1,10 +1,8 @@
-package br.com.zupacademy.andressa.casadocodigo.controller.dto.request;
+package br.com.zupacademy.andressa.casadocodigo.autor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
-import br.com.zupacademy.andressa.casadocodigo.model.Autor;
 
 public class AutorDtoRequest {
 

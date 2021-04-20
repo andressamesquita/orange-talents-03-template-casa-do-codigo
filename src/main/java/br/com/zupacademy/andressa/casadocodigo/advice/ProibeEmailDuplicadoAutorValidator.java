@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import br.com.zupacademy.andressa.casadocodigo.controller.dto.request.AutorDtoRequest;
-import br.com.zupacademy.andressa.casadocodigo.model.Autor;
-import br.com.zupacademy.andressa.casadocodigo.repository.AutorRepository;
+import br.com.zupacademy.andressa.casadocodigo.autor.Autor;
+import br.com.zupacademy.andressa.casadocodigo.autor.AutorDtoRequest;
+import br.com.zupacademy.andressa.casadocodigo.autor.AutorRepository;
 
 @Component
 public class ProibeEmailDuplicadoAutorValidator implements Validator {

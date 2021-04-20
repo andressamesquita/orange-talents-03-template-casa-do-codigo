@@ -1,6 +1,4 @@
-package br.com.zupacademy.andressa.casadocodigo.controller.dto.response;
-
-import br.com.zupacademy.andressa.casadocodigo.model.Categoria;
+package br.com.zupacademy.andressa.casadocodigo.categoria;
 
 public class CategoriaDtoResponse {
 

@@ -1,9 +1,7 @@
-package br.com.zupacademy.andressa.casadocodigo.controller.dto.response;
+package br.com.zupacademy.andressa.casadocodigo.autor;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
-import br.com.zupacademy.andressa.casadocodigo.model.Autor;
 
 public class AutorDtoResponse {
 

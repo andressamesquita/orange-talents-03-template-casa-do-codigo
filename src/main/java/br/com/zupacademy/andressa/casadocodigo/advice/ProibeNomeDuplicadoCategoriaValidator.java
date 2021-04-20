@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import br.com.zupacademy.andressa.casadocodigo.controller.dto.request.CategoriaDtoRequest;
-import br.com.zupacademy.andressa.casadocodigo.model.Categoria;
-import br.com.zupacademy.andressa.casadocodigo.repository.CategoriaRepository;
+import br.com.zupacademy.andressa.casadocodigo.categoria.Categoria;
+import br.com.zupacademy.andressa.casadocodigo.categoria.CategoriaDtoRequest;
+import br.com.zupacademy.andressa.casadocodigo.categoria.CategoriaRepository;
 
 @Component
 public class ProibeNomeDuplicadoCategoriaValidator implements Validator {

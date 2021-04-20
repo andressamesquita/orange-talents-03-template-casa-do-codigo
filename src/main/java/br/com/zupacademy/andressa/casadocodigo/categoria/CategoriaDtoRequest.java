@@ -1,13 +1,16 @@
-package br.com.zupacademy.andressa.casadocodigo.controller.dto.request;
+package br.com.zupacademy.andressa.casadocodigo.categoria;
 
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import br.com.zupacademy.andressa.casadocodigo.advice.UniqueValue;
+
 public class CategoriaDtoRequest {
 
 	@NotBlank
+	@UniqueValue(domainClass = Categoria.class, fieldName = "nome")
 	private String nome;
 
 	@JsonCreator

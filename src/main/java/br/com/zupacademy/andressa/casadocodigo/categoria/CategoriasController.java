@@ -1,4 +1,4 @@
-package br.com.zupacademy.andressa.casadocodigo.controller;
+package br.com.zupacademy.andressa.casadocodigo.categoria;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -14,10 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.zupacademy.andressa.casadocodigo.advice.ProibeEmailDuplicadoAutorValidator;
 import br.com.zupacademy.andressa.casadocodigo.advice.ProibeNomeDuplicadoCategoriaValidator;
-import br.com.zupacademy.andressa.casadocodigo.controller.dto.request.CategoriaDtoRequest;
-import br.com.zupacademy.andressa.casadocodigo.controller.dto.response.CategoriaDtoResponse;
-import br.com.zupacademy.andressa.casadocodigo.model.Categoria;
-import br.com.zupacademy.andressa.casadocodigo.repository.CategoriaRepository;
 
 @RestController
 @RequestMapping("/categorias")

@@ -1,10 +1,8 @@
-package br.com.zupacademy.andressa.casadocodigo.repository;
+package br.com.zupacademy.andressa.casadocodigo.autor;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import br.com.zupacademy.andressa.casadocodigo.model.Autor;
 
 public interface AutorRepository extends JpaRepository<Autor, Long>{
 
