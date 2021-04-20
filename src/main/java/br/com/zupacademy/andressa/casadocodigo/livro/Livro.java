@@ -37,11 +37,11 @@ public class Livro {
 
 	@Deprecated
 	public Livro() {
-		
+
 	}
-	
-	public Livro(String titulo, String resumo, String sumario, BigDecimal preco, Integer qtdPaginas,
-			String isbn, LocalDate dataPublicacao, Categoria categoria, Autor autor) {
+
+	public Livro(String titulo, String resumo, String sumario, BigDecimal preco, Integer qtdPaginas, String isbn,
+			LocalDate dataPublicacao, Categoria categoria, Autor autor) {
 		this.titulo = titulo;
 		this.resumo = resumo;
 		this.sumario = sumario;
@@ -53,7 +53,6 @@ public class Livro {
 		this.autor = autor;
 	}
 
-	
 	public Long getId() {
 		return id;
 	}

@@ -1,10 +1,13 @@
 package br.com.zupacademy.andressa.casadocodigo.livro;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +28,7 @@ public class LivrosController {
 
 	@Autowired
 	private AutorRepository autorRepository;
+	
 
 	@PostMapping
 	@Transactional
@@ -38,6 +42,13 @@ public class LivrosController {
 		}
 
 		return ResponseEntity.badRequest().build();
+
+	}
+
+	@GetMapping
+	public ResponseEntity<List<LivroDtoLista>> listarLivros() {
+		List<Livro> livros = livroRepository.findAll();
+		return ResponseEntity.ok(new LivroDtoLista().converter(livros));
 
 	}
 

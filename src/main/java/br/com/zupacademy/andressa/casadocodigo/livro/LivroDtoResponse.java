@@ -10,6 +10,7 @@ public class LivroDtoResponse {
 	private Integer qtdPaginas;
 	private String categoria;
 	private String autor;
+	
 
 	public LivroDtoResponse(Livro livro) {
 		this.titulo = livro.getTitulo();
@@ -19,6 +20,7 @@ public class LivroDtoResponse {
 		this.categoria = livro.getCategoria().getNome();
 		this.autor = livro.getAutor().getNome();
 	}
+	
 
 	public String getTitulo() {
 		return titulo;
@@ -36,7 +38,6 @@ public class LivroDtoResponse {
 		return qtdPaginas;
 	}
 
-	
 	public String getCategoria() {
 		return categoria;
 	}
@@ -44,7 +45,6 @@ public class LivroDtoResponse {
 	public String getAutor() {
 		return autor;
 	}
-	
 	
 
 }
