@@ -1,4 +1,4 @@
-package br.com.zupacademy.andressa.casadocodigo.advice;
+package br.com.zupacademy.andressa.casadocodigo.validators;
 
 import java.util.List;
 

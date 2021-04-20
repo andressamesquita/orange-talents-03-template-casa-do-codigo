@@ -1,4 +1,4 @@
-package br.com.zupacademy.andressa.casadocodigo.advice;
+package br.com.zupacademy.andressa.casadocodigo.validators;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
