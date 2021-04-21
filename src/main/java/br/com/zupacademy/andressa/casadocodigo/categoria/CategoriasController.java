@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.zupacademy.andressa.casadocodigo.validators.ProibeEmailDuplicadoAutorValidator;
 import br.com.zupacademy.andressa.casadocodigo.validators.ProibeNomeDuplicadoCategoriaValidator;
 
 @RestController

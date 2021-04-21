@@ -21,18 +21,27 @@ public class TratarErroAdvice {
 
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public List<ErroAutorRequest> tratarException(MethodArgumentNotValidException exception) {
+	public List<ErroRequest> tratarException(MethodArgumentNotValidException exception) {
 
-		List<ErroAutorRequest> dto = new ArrayList<>();
+		List<ErroRequest> dto = new ArrayList<>();
 
 		List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
 		fieldErrors.forEach(e -> {
 			String mensagem = messageSource.getMessage(e, LocaleContextHolder.getLocale());
-			ErroAutorRequest erro = new ErroAutorRequest(e.getField(), mensagem);
+			ErroRequest erro = new ErroRequest(e.getField(), mensagem);
 			dto.add(erro);
 		});
 
 		return dto;
 	}
-
+	
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(IllegalArgumentException.class)
+	public ErroRequest tratarException(IllegalArgumentException exception) {
+		return new ErroRequest("Campo-inválido", exception.getLocalizedMessage());
+	
+	}
+	
+	
+	
 }

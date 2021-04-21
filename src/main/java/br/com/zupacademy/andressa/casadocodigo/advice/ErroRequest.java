@@ -1,11 +1,11 @@
 package br.com.zupacademy.andressa.casadocodigo.advice;
 
-public class ErroAutorRequest {
+public class ErroRequest {
 
 	private String campo;
 	private String erro;
 	
-	public ErroAutorRequest(String campo, String erro) {
+	public ErroRequest(String campo, String erro) {
 		this.campo = campo;
 		this.erro = erro;
 	}
