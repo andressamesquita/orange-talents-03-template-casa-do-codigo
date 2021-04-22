@@ -34,6 +34,11 @@ public class Cliente {
 
 	private String telefone;
 	private String cep;
+	
+	@Deprecated
+	public Cliente() {
+		
+	}
 
 	public Cliente(String email, String nome, String sobrenome, String documento, String endereco, String complemento,
 			String cidade, Pais pais, Estado estado, String telefone, String cep) {

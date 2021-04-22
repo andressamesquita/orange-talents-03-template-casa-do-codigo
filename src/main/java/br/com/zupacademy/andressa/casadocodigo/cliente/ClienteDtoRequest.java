@@ -10,11 +10,13 @@ import br.com.zupacademy.andressa.casadocodigo.localidade.Estado;
 import br.com.zupacademy.andressa.casadocodigo.localidade.EstadoRepository;
 import br.com.zupacademy.andressa.casadocodigo.localidade.Pais;
 import br.com.zupacademy.andressa.casadocodigo.localidade.PaisRepository;
+import br.com.zupacademy.andressa.casadocodigo.validators.UniqueValue;
 
 public class ClienteDtoRequest {
 
 	@NotBlank
 	@Email
+	@UniqueValue(domainClass = Cliente.class, fieldName = "email")
 	private String email;
 
 	@NotBlank
@@ -69,7 +71,6 @@ public class ClienteDtoRequest {
 	public Cliente toModel(PaisRepository paisRepository, EstadoRepository estadoRepository) {
 
 		Pais pais = getPais(paisRepository);
-
 		Estado estado = getEstado(estadoRepository, pais);
 
 		return new Cliente(email, nome, sobrenome, documento, endereco, complemento, cidade, pais, estado, telefone,
@@ -79,18 +80,12 @@ public class ClienteDtoRequest {
 
 	private Estado getEstado(EstadoRepository estadoRepository, Pais pais) {
 
+		this.validaSeDarErroSePassarUmEstadoParaUmPaisQueNaoTemEstados(pais);
+
 		Estado estado = null;
 
-		if (pais.getEstados().size() == 0 && idEstado != null) {
-			throw new IllegalArgumentException(
-					"Esse país não tem estados e você está selecionando um estado para ele!");
-		}
-
 		if (idEstado == null) {
-			if (pais.getEstados().size() > 0) {
-				throw new IllegalArgumentException("Você deveria ter selecionado um estado para esse país");
-			}
-
+			this.validaSeDarErroQuandoNaoPassaEstadoEmUmPaisQueTemEstados(pais);
 			return null;
 		}
 
@@ -100,19 +95,40 @@ public class ClienteDtoRequest {
 			estado = optionalEstado.get();
 
 		} else {
-			if (pais.getEstados().size() > 0) {
-				throw new IllegalArgumentException(
-						"O estado escolhido não existe, mas esse país possui estados, escolha um estado válido");
-			}
+			this.validaSeDarErroAoPassarEstadoInexistenteEmUmPaisQueTemEstados(pais);
 
 		}
 
+		this.validaSeDarErroAoPassarEstadoDeOutroPais(pais, estado);
+
+		return estado;
+	}
+
+	private void validaSeDarErroAoPassarEstadoDeOutroPais(Pais pais, Estado estado) {
 		if (!pais.euPossuoEsseEstado(estado)) {
 			throw new IllegalArgumentException("Este estado não pertence a este país");
 
 		}
+	}
 
-		return estado;
+	private void validaSeDarErroAoPassarEstadoInexistenteEmUmPaisQueTemEstados(Pais pais) {
+		if (pais.getEstados().size() > 0) {
+			throw new IllegalArgumentException(
+					"O estado escolhido não existe, mas esse país possui estados, escolha um estado válido");
+		}
+	}
+
+	private void validaSeDarErroQuandoNaoPassaEstadoEmUmPaisQueTemEstados(Pais pais) {
+		if (pais.getEstados().size() > 0) {
+			throw new IllegalArgumentException("Você deveria ter selecionado um estado para esse país");
+		}
+	}
+
+	private void validaSeDarErroSePassarUmEstadoParaUmPaisQueNaoTemEstados(Pais pais) {
+		if (pais.getEstados().size() == 0 && idEstado != null) {
+			throw new IllegalArgumentException(
+					"Esse país não tem estados e você está selecionando um estado para ele!");
+		}
 	}
 
 	private Pais getPais(PaisRepository paisRepository) {

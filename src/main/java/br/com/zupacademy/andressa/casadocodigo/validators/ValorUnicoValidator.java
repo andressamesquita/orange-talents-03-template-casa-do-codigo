@@ -30,7 +30,7 @@ public class ValorUnicoValidator implements ConstraintValidator<UniqueValue, Obj
 		query.setParameter("value", value);
 		List<?> results = query.getResultList();
 		Assert.state(results.size() <= 1,
-				"foi encontrado mais de um " + klass + "com este atributo " + domainAtribute + "igual a " + value);
+				"foi encontrado mais de um " + klass + " com este atributo " + domainAtribute + " igual a " + value);
 		return results.isEmpty();
 	}
 

@@ -34,14 +34,19 @@ public class TratarErroAdvice {
 
 		return dto;
 	}
-	
+
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(IllegalArgumentException.class)
 	public ErroRequest tratarException(IllegalArgumentException exception) {
 		return new ErroRequest("Campo-inválido", exception.getLocalizedMessage());
-	
+
 	}
-	
-	
-	
+
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(IllegalStateException.class)
+	public ErroRequest tratarException(IllegalStateException exception) {
+		return new ErroRequest("Estado-inválido", exception.getLocalizedMessage());
+
+	}
+
 }
