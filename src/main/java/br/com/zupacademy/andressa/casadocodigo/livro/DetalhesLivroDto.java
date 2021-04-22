@@ -1,7 +1,6 @@
 package br.com.zupacademy.andressa.casadocodigo.livro;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class DetalhesLivroDto {

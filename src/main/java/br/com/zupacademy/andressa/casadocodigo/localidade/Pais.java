@@ -1,7 +1,7 @@
 package br.com.zupacademy.andressa.casadocodigo.localidade;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +23,7 @@ public class Pais {
 
 	@Column(name = "estados")
 	@OneToMany(mappedBy = "pais")
-	private List<Estado> estados = new ArrayList<>();
+	private Set<Estado> estados = new HashSet<>();
 
 	@Deprecated
 	public Pais() {
@@ -33,8 +33,6 @@ public class Pais {
 	public Pais(String nome) {
 		this.nome = nome;
 	}
-	
-	
 
 	public Long getId() {
 		return id;
@@ -44,8 +42,44 @@ public class Pais {
 		return nome;
 	}
 
-	public List<Estado> getEstados() {
+	public Set<Estado> getEstados() {
 		return estados;
+	}
+
+	public boolean euPossuoEsseEstado(Estado estado) {
+		return estados.contains(estado);
+
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pais other = (Pais) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		return true;
 	}
 
 }
